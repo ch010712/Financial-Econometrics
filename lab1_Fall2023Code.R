@@ -25,7 +25,6 @@ legend(x="topleft", legend=c("Microsoft", "Starbucks"), lwd=2,
 #따라서 Starbucks 주식은 더 낮은 리스크를 가지며, 더 낮은 예상 수익률을 제공합니다.
 
 
-
 #2번
 # VaR example
 mu.R = 0.04
@@ -33,8 +32,8 @@ sd.R = 0.09
 w0 = 100000
 q.01.R = mu.R + sd.R*qnorm(0.01)
 q.05.R = mu.R + sd.R*qnorm(0.05)
-VaR.01 = (q.01.R*w0)
-VaR.05 = (q.05.R*w0)
+VaR.01 = abs(q.01.R*w0)
+VaR.05 = abs(q.05.R*w0)
 VaR.01
 VaR.05
 
@@ -43,10 +42,11 @@ mu.r = 0.04
 sd.r = 0.09
 q.01.R = exp(mu.r + sd.r*qnorm(0.01)) - 1
 q.05.R = exp(mu.r + sd.r*qnorm(0.05)) - 1
-VaR.01 = (q.01.R*w0)
-VaR.05 = (q.05.R*w0)
+VaR.01 = abs(q.01.R*w0)
+VaR.05 = abs(q.05.R*w0)
 VaR.01
 VaR.05
+
 
 #3-2번
 # 주어진 매개 변수
@@ -70,8 +70,8 @@ VaR_1_simple = exp(q_1) - 1
 VaR_5_simple = exp(q_5) - 1
 
 # 투자에 대한 연간 VaR 계산
-VaR_1_yearly = VaR_1_simple * W0
-VaR_5_yearly = VaR_5_simple * W0
+VaR_1_yearly =abs( VaR_1_simple * W0 )
+VaR_5_yearly =abs( VaR_5_simple * W0 )
 
 # 결과 출력
 print(paste("연간 1% VaR:", VaR_1_yearly))
